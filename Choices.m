@@ -1,0 +1,14 @@
+Geometry='BezierDefByPoints';
+% Geometry='Bezier';
+%bladeLoadingMethod='UcU';%At the moment this only works with betaEval='Node';
+Recording=false;
+bladeLoadingMethod='BetaDistribution';     
+betaEval='lineSegment';
+%betaEval='Node';
+%FindBetaBlade='streamlines';
+FindBetaBlade='freeVortex';
+addDraftTube='yes';
+addGuideVanes='yes';
+addGuideVaneGeometry='no';
+empiricalGamma='no';
+nondimensional='yes';
