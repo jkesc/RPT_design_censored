@@ -1,6 +1,6 @@
 *.asv
 *.crv
-*.txt
 *.csv
 *.mat
 *.pdf
+writeShroudAndHubToDM.txt
