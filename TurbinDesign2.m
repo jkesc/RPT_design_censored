@@ -54,11 +54,11 @@ figno=1;
 % month=VS.month((DeltaH>0));
 % Year=VS.year((DeltaH>0));
 % DeltaH=DeltaH(DeltaH>0);
-% Day=Day(DeltaH<);
-% Hour=Hour(DeltaH<);
-% month=month(DeltaH<);
-% Year=Year(DeltaH<);
-% DeltaH=DeltaH(DeltaH<);
+% Day=Day(DeltaH<100);
+% Hour=Hour(DeltaH<100);
+% month=month(DeltaH<)100;
+% Year=Year(DeltaH<100);
+% DeltaH=DeltaH(DeltaH<100);
 % figure(figno)
 % figname.TotalHead=figno;
 % figno=figno+1;
@@ -69,7 +69,7 @@ figno=1;
 %    avg(i)=mean(DeltaH(month==i));
 % end
 % plot(avg)
-% Head=mean(avg); %=X may be more realistic
+% Head=mean(avg); %=100 may be more realistic
 % title({'Head difference between higher and lower reservoir throughout the year',['Mean value:  ',num2str(Head),' m']})
 % xlabel('Month')
 % ylabel('Head [m]')
@@ -79,18 +79,18 @@ figno=1;
 % figname.HeadDownstream=figno;
 % figno=figno+1;
 % hold on
-% H_turbine=;
+% H_turbine=100;
 % DeltaH=VS.Oyarvatn-H_turbine;
-% Day=VS.Day((abs(DeltaH)<));
-% Hour=VS.Hour((abs(DeltaH)<));
-% month=VS.month((abs(DeltaH)<));
-% Year=VS.year((abs(DeltaH)<));
-% DeltaH=DeltaH((abs(DeltaH)<));
-% Day=Day(abs(DeltaH)<);
-% Hour=Hour(abs(DeltaH)<);
-% month=month(abs(DeltaH)<);
-% Year=Year(abs(DeltaH)<);
-% DeltaH=DeltaH(DeltaH<);
+% Day=VS.Day((abs(DeltaH)<20));
+% Hour=VS.Hour((abs(DeltaH)<20));
+% month=VS.month((abs(DeltaH)<20));
+% Year=VS.year((abs(DeltaH)<20));
+% DeltaH=DeltaH((abs(DeltaH)<20));
+% Day=Day(abs(DeltaH)<20);
+% Hour=Hour(abs(DeltaH)<20);
+% month=month(abs(DeltaH)<20);
+% Year=Year(abs(DeltaH)<20);
+% DeltaH=DeltaH(DeltaH<20);
 % figure(figname.HeadDownstream)
 % hold on
 % plot(month,DeltaH,'o')
@@ -101,9 +101,9 @@ figno=1;
 % plot(avg)
 % %Assuming there will be most pumping between mid july and early september,
 % %so months 7, 8 and 9:
-% %Head=mean(avg(7:9))=X
+% %Head=mean(avg(7:9))=100
 % %but it may be stupid to not allow for pumping all year around, so
-% HeadDiffSubmergence=mean(avg);%Approximately Xm
+% HeadDiffSubmergence=mean(avg);%Approximately 8m
 % title({'Difference between Øyarvatn and the turbine',['Mean value:  ',num2str(HeadDiffSubmergence),' m']})
 % ylabel('Head [m]')
 % xlabel('Month')
@@ -142,7 +142,7 @@ D2=Values.D2;                                       %Diameter imposed by existin
 A2=pi*(D2.^2-Dhub.^2)./4;
 acceleration=A/A2;
 D2m=D2;                                         %THIS SHOULD BE CALCULATED BY sqrt(0.5*(D2min^2+D2max^2), Geometric diameter
-e=*D1;                                     %blade thickness [X,X]*D1 Should be in the higher range for high heads.
+e=0.3*D1;                                     %blade thickness [X,X]*D1 Should be in the higher range for high heads.
 n= Values.n;                                         %current rotational velocity increased by one syncronous vel.
 %b=A2./(pi.*D1);                                %b at 1
 
@@ -182,7 +182,7 @@ switch(Geometry)
        BezierCurve=extractBezierByPoints(0,bezierpoints);
        BezierCurve=ppval(BezierCurve,linspace(0,R1GuideVanes));
 %        BezierCurve=Bezier(0,-aEllipse,bEllipse,'Plotnt');                %Creating an arbitrary chosen bezier-curve to connect the outlet and inlet
-       xyBezier=interparc(iEllipse,linspace(0,),BezierCurve,'spline'); %Dividing it into iEllipse equally spaced parts
+       xyBezier=interparc(iEllipse,linspace(0,2),BezierCurve,'spline'); %Dividing it into iEllipse equally spaced parts
        xBezier=xyBezier(:,1);                                                   %Extracting data for the points as two vectors
        yBezier=xyBezier(:,2);
        xEllipse=xBezier(end:-1:1);                                              %and putting them in the same form as would have been used for the Ellipsis
